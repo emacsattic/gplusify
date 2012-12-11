@@ -36,6 +36,7 @@
     (font-lock-function-name-face "_"))
   "Alist mapping face names to Google Plus characters.")
 
+;;;###autoload
 (defun gplusify-region (beg end)
   "Format region for Google Plus."
   (interactive "r")
