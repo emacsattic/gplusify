@@ -46,6 +46,18 @@
     (gplusify--faces beg end)
     (gplusify--spaces beg end)))
 
+;;;###autoload
+(defun gplusify-region-as-kill (beg end)
+  "Save the gplusified version of the selected region to
+the kill ring."
+  (interactive "r")
+  (let ((sel-text (buffer-substring beg end)))
+    (with-temp-buffer
+      (insert sel-text)
+      (gplusify-region (point-min) (point-max))
+      (kill-region (point-min) (point-max)))
+    (deactivate-mark)))
+
 (defun gplusify--spaces (beg end)
   "Replace indentation with NO-BREAK SPACE in the region."
   (untabify beg end)
